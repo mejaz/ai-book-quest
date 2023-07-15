@@ -28,6 +28,5 @@ export const getCompletion = async (prompt) => {
 		max_tokens: 2000,
 		temperature: 0.7
 	});
-	console.log('-->', completion.data.choices[0].text)
 	return JSON.parse(completion.data.choices[0].text)
 }

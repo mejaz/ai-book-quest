@@ -17,7 +17,7 @@ const generatePromptByFilter = (userData) => {
 const generatePromptByLastReads = (userData) => {
 	return `
 		Based on these titles ${userData}, which is a users' last read books, suggest maximum 6 book titles 
-		that this user may like in the below JSON format
+		that this user may like in the below JSON format. Do not send any of the last read books in the response.
 		
 		sample output JSON:
 		[{"title": "The White Tiger"}, {"title": "A House For Mr. Biswas"}]
