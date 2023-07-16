@@ -61,8 +61,8 @@ export default function CustomModal({isOpen, closeModal, data}) {
 
 									<div className="mt-4 text-right">
 										<Link
-											// href={`https://www.amazon.com/s?k=${data.title}`}  // takes to books search in amazon
-											href={`https://www.amazon.com/dp/${data.isbn10}`}  // takes to book page
+											href={`https://www.amazon.com/s?k=${data.title}`}  // takes to books search in amazon
+											// href={`https://www.amazon.com/dp/${data.isbn10}`}  // takes to book page
 											// href={`https://www.amazon.com/dp/${data.isbn10}/?tag={your_associate_tag}`}  // for associate marketing
 											target={"_blank"}
 											className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

@@ -11,7 +11,7 @@ export const getGoogleBooksInfo = async (titlesArr) => {
 				authors: bookObj.volumeInfo.authors,
 				summary: bookObj.volumeInfo.description,
 				publisher: bookObj.volumeInfo.publisher,
-				image: bookObj.volumeInfo.imageLinks.thumbnail,
+				image: bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : "",
 				isbn10: bookObj.volumeInfo.industryIdentifiers
 					? getIsbn10(bookObj.volumeInfo.industryIdentifiers)
 					: undefined,
