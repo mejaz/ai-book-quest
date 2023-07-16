@@ -12,7 +12,7 @@ export default function Home() {
 	return (
 		<main className={"bg-mauve-gradient"}>
 			<Head>
-				<title>Book Quest</title>
+				<title>AI Book Quest</title>
 			</Head>
 			<div className={'flex-grow'}>
 				<Header/>
