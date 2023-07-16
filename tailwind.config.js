@@ -7,6 +7,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				"mauve-gradient": "linear-gradient(to right, #525252, #3d72b4)",
+			},
 			fontFamily: {
         indieFlower: ["'Indie Flower', cursive"],
       },

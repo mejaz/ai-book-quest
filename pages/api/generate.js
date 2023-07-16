@@ -4,7 +4,7 @@ import {getCompletion} from "@/openAiServices";
 
 const generatePromptByFilter = (userData) => {
 	return `
-		Based on the data below, suggest maximum 6 book titles in the below JSON format
+		Based on the data below, suggest maximum 12 book titles in the below JSON format
 		
 		data: ${JSON.stringify(userData)}
 		sample output JSON:
@@ -16,7 +16,7 @@ const generatePromptByFilter = (userData) => {
 
 const generatePromptByLastReads = (userData) => {
 	return `
-		Based on these titles ${userData}, which is a users' last read books, suggest maximum 6 book titles 
+		Based on these titles ${userData}, which is a users' last read books, suggest maximum 12 book titles 
 		that this user may like in the below JSON format. Do not send any of the last read books in the response.
 		
 		sample output JSON:
@@ -27,20 +27,25 @@ const generatePromptByLastReads = (userData) => {
 }
 
 export default async function handler(req, res) {
-	if (req.method === 'POST') {
-		const {searchType, ...data} = req.body
-		let result;
-		let prompt
+	try {
+		if (req.method === 'POST') {
+			const {searchType, ...data} = req.body
+			let result;
+			let prompt
 
-		if (searchType.toLowerCase() === 'filter') {  // search by filter
-			prompt = generatePromptByFilter({...data})
+			if (searchType.toLowerCase() === 'filter') {  // search by filter
+				prompt = generatePromptByFilter({...data})
+			} else {
+				prompt = generatePromptByLastReads(data.titles)
+			}
+
+			result = await getCompletion(prompt)
+			return res.json({result})
 		} else {
-			prompt = generatePromptByLastReads(data.titles)
+			return res.status(400).json({message: 'Method not supported'})
 		}
-
-		result = await getCompletion(prompt)
-		return res.json({result})
-	} else {
-		return res.status(400).json({message: 'Method not supported'})
+	} catch (e) {
+		return res.status(500).json({message: `Error occurred: ${e.message}`})
 	}
+
 }

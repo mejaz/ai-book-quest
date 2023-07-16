@@ -10,7 +10,7 @@ import Intro from "@/components/Intro";
 export default function Home() {
 	const [suggestions, setSuggestions] = useState([])
 	return (
-		<main className={"bg-zinc-600"}>
+		<main className={"bg-mauve-gradient"}>
 			<Head>
 				<title>Book Quest</title>
 			</Head>
